@@ -17,11 +17,12 @@ import {
     type WelcomePayload,
 } from './world.events.js';
 import { WorldService, ZONE_ID } from './world.service.js';
+import { ALLOWED_ORIGINS } from '../../config.js';
 
 const ROOM = `zone:${ZONE_ID}`;
 
 @WebSocketGateway({
-    cors: { origin: 'http://localhost:5173' },
+    cors: { origin: ALLOWED_ORIGINS },
 })
 export class WorldGateway implements OnGatewayConnection, OnGatewayDisconnect {
     private readonly logger = new Logger(WorldGateway.name);
